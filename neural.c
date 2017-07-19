@@ -1,47 +1,63 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <fcntl.h>
-
+#include "neural.h"
 
 #define	IN_NUM	3
 #define	OUT_NUM	2
 #define PATTERN_NUM	5
 
-#define	INPUT_LAYER	1
-#define	HIDDEN_LAYER	2
-#define	OUTPUT_LAYER	3
+#define	IN_LAYER	1
+#define	HID_LAYER	2
+#define	OUT_LAYER	3
 
-typedef struct	s_network	t_network;
-struct	s_network
+t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
 {
-	s_neural	*input_l;
-	s_neural	*hidden_l;
-	s_neural	*output_l;
+  new = malloc(sizeof(t_neural));
+  /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
+  new->type = 0;
+  new->w_sum = 0;
+  new->w_in = 1 / rand();
+  new->w_out = 1 / rand();
+  new->value = 0;
+  if(layer->start == NULL)
+    {
+      new->prev = NULL;
+      layer->start = new;
+      layer->tmp = new;
+    }
+  else
+    {
+      new->prev = layer->tmp;
+      layer->tmp->next = new;
+      layer->tmp = new;
+      
+    }
+  new->next = NULL;
+  layer->end = new;
+  return (new);
 }
 
-typedef	struct	s_neural	t_neural;
-struct	s_neural
+t_layer		*init_layer(int nb_node, char type)
 {
-	char	type;/* input?hidden?output?*/
-	double	w_sum;
-	double	w_in;
-	double	w_out;
-	s_neural	*prev;
-	s_neural	*next;
+  t_layer	*newlayer;
+  newlayer = malloc(sizeof(t_layer));
+  newlayer->start = NULL;
+  newlayer->end = NULL;
+  int i = 0;
+  while (i < nb_node)
+    {
+      t_neural	*new;
+      new = init_node(newlayer, new, type);
+      i++;
+    }
+  return (newlayer);
 }
 
-void	init_layer(int nb_node)
+t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 {
-
-}
-
-void	init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
-{
-	network = sizeof(t_network);
-	network->input_l = init_layer(nb_in);
-	network->hidden_l = init_layer(nb_hi);
-	network->output_l = init_layer(nb_out);
+	network = malloc(sizeof(t_network));
+	network->input_l = init_layer(nb_in, IN_LAYER);
+	network->hidden_l = init_layer(nb_hi, HID_LAYER);
+	network->output_l = init_layer(nb_out, OUT_LAYER);
+	return (network);
 }
 
 int	main(int ac, char **av)
@@ -51,7 +67,13 @@ int	main(int ac, char **av)
 	int	targets[PATTERN_NUM][OUT_NUM] = { {0,0}, {0,1}, {0,0}, {1,0}, {1,1} };
 	int	num_training = 10000;
 
-	network = init_network(2, 3, 1);/*init_network(nb_in, nb_hi, nb_out)*/
+	/*network initalisation*/
+	network = init_network(2, 3, 1, network);
+	print_layer(network->input_l);
+	print_layer(network->hidden_l);
+	print_layer(network->output_l);
+	//fill_network(inputs, targets, network);
 
-	train_network(inputs, outputs, num_training);
+	/*training begin*/
+	//train_network(inputs, outputs, num_training);
 }
