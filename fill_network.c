@@ -17,6 +17,14 @@ void	fill_layer_hi(t_layer *layer)
 	t_neural	*tmp = layer->start;
 	while (tmp)
 		{
+		tmp->link = malloc(sizeof(double) * OUT_NUM);
+		int i = 0;
+		while (i < OUT_NUM)
+			{
+			int r = rand() % 9 + 1;
+			tmp->link[i] = (double)r / 10;
+			i++;
+			}
 		tmp = tmp->next;
 		}
 }

@@ -25,5 +25,6 @@ void	run_network(t_network *network, int nb_it)
 	while (i < nb_it)
 	{
 		get_input_w(network);
+		i++;
 	}
 }

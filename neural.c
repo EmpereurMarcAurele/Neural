@@ -1,12 +1,5 @@
 #include "neural.h"
 
-#define	IN_NUM	12
-#define	OUT_NUM	4
-
-#define	IN_LAYER	1
-#define	HID_LAYER	2
-#define	OUT_LAYER	3
-
 t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
 {
   new = malloc(sizeof(t_neural));
@@ -62,7 +55,7 @@ t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 
 int	main(int ac, char **av)
 {
-	t_network	*network;
+	t_network	*network = NULL;;
 	int	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
 	int	targets[OUT_NUM] = {0,1,0,1};
 	if (ac <= 1)
@@ -79,4 +72,5 @@ int	main(int ac, char **av)
 
 	/*training begin*/
 	run_network(network, nb_it);
+	return (0);
 }

@@ -7,6 +7,13 @@
 #include <time.h>
 #include <fcntl.h>
 
+#define IN_NUM  12
+#define OUT_NUM 4
+
+#define IN_LAYER        1
+#define HID_LAYER       2
+#define OUT_LAYER       3
+
 typedef struct  s_neural        t_neural;
 struct  s_neural
 {
