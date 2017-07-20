@@ -38,6 +38,16 @@ void	fill_layer_in(double *tab, t_layer *layer)
 	while (tmp)
 		{
 		tmp->value = tab[i];
+		int j = 0;
+		tmp->link = malloc(sizeof(double) * HID_NUM);
+		while (j < HID_NUM)
+			{
+			int r = rand() % 9 + 1;
+			tmp->link[j] = (double)r / 10;
+			printf("link %f ", tmp->link[j]);
+			j++;
+			}
+			printf("\n");
 		tmp = tmp->next;
 		i++;
 		}

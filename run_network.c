@@ -21,19 +21,18 @@ int		i = 0;
 void		get_input_w(t_network *network)
 {
 t_neural	*node_hi = network->hidden_l->start;
-
+int		i = 0;
 	while (node_hi)
 		{
 		t_neural        *node_in = network->input_l->start;
 		while (node_in)
 			{
-			int r = rand() % 9 + 1;
-			node_in->w_out = (double)r / 10;
-			node_hi->w_sum += (node_in->w_out * node_in->value);
+			node_hi->w_sum += (node_in->link[i] * node_in->value);
 			node_in = node_in->next;
 			}
 		node_hi->value = sigmoid_func(node_hi->w_sum);
 		node_hi = node_hi->next;
+		i++;
 		}
 }
 
@@ -44,6 +43,7 @@ void	run_network(t_network *network, int nb_it)
 	{
 		get_input_w(network);
 		get_hidden_w(network);
+		
 		i++;
 	}
 }

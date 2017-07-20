@@ -8,7 +8,7 @@ void	print_layer(t_layer *layer)
   while (tmp)
     {
 	printf("target = %f ", tmp->target);
-      printf("value = %f ; w_in = %f\n", tmp->value, tmp->w_out);
+      printf("value = %f ; w_sum = %f\n", tmp->value, tmp->w_sum);
       tmp = tmp->next;
     }
 printf("\n");

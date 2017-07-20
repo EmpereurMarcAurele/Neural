@@ -9,6 +9,7 @@
 #include <fcntl.h>
 
 #define IN_NUM  12
+#define HID_NUM 3
 #define OUT_NUM 4
 
 #define IN_LAYER        1
@@ -20,7 +21,6 @@ struct  s_neural
 {
         char		type;/* input?hidden?output?*/
         double		w_sum;
-        double		w_out;
 	double		value;
 	double		target;
 	double		*link;

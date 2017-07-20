@@ -8,7 +8,6 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   new->w_sum = 0;
   int r = rand() % 9 + 1;
   new->link = NULL;
-  new->w_out = (double)r / 10;
   new->value = 0;
   new->target = 0;
   if(layer->start == NULL)
@@ -67,7 +66,7 @@ int	main(int ac, char **av)
 	gettimeofday(&t1, NULL);
 	srand(t1.tv_usec * t1.tv_sec);
 	/*network initalisation*/
-	network = init_network(IN_NUM, 3, OUT_NUM, network);
+	network = init_network(IN_NUM, HID_NUM, OUT_NUM, network);
 	fill_network(inputs, targets, network);
 	print_layer(network->input_l);
 	print_layer(network->hidden_l);
