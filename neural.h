@@ -19,7 +19,7 @@
 typedef struct  s_neural        t_neural;
 struct  s_neural
 {
-        char		type;/* input?hidden?output?*/
+        char		type;/* input?hidden?output? RESERVED*/
         double		w_sum;
 	double		value;
 	double		target;
@@ -57,8 +57,10 @@ void		fill_layer_hi(t_layer *);
 void		fill_layer_in(double *, t_layer *);
 void		fill_network(double *,double *, t_network *);
 /* run_network.c */
+void		back_propagationHO(t_network *);
 void		get_input_w(t_network *);
 void		run_network(t_network *, int);
 /* function.c */
+double		sigmoid_deriv(double);
 double		sigmoid_func(double);
 #endif /*NEURAL_H_*/

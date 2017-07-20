@@ -6,7 +6,6 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
   new->type = 0;
   new->w_sum = 0;
-  int r = rand() % 9 + 1;
   new->link = NULL;
   new->value = 0;
   new->target = 0;
