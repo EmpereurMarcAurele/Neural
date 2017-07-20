@@ -3,11 +3,12 @@
 void	print_layer(t_layer *layer)
 {
   t_neural	*tmp;
-  
+
   tmp = layer->start;
   while (tmp)
     {
-      printf("w_in = %f\n", tmp->w_out);
+	printf("target = %f ", tmp->target);
+      printf("value = %f ; w_in = %f\n", tmp->value, tmp->w_out);
       tmp = tmp->next;
     }
 printf("\n");

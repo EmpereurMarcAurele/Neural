@@ -1,12 +1,12 @@
 #include "neural.h"
 
-void	fill_layer_out(int *tab, t_layer *layer)
+void	fill_layer_out(double *tab, t_layer *layer)
 {
 	t_neural	*tmp = layer->start;
 	int i = 0;
 	while (tmp)
 		{
-		tmp->target = (double)tab[i];
+		tmp->target = tab[i];
 		tmp = tmp->next;
 		i++;
 		}
@@ -23,25 +23,27 @@ void	fill_layer_hi(t_layer *layer)
 			{
 			int r = rand() % 9 + 1;
 			tmp->link[i] = (double)r / 10;
+			printf("link %f ", tmp->link[i]);
 			i++;
 			}
+			printf("\n");
 		tmp = tmp->next;
 		}
 }
 
-void	fill_layer_in(int *tab, t_layer *layer)
+void	fill_layer_in(double *tab, t_layer *layer)
 {
 	t_neural	*tmp = layer->start;
 	int i = 0;
 	while (tmp)
 		{
-		tmp->value = (double)tab[i];
+		tmp->value = tab[i];
 		tmp = tmp->next;
 		i++;
 		}
 }
 
-void	fill_network(int *inputs, int *target, t_network *network)
+void	fill_network(double *inputs, double *target, t_network *network)
 {
 	fill_layer_in(inputs, network->input_l);
 	fill_layer_hi(network->hidden_l);

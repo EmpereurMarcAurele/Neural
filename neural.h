@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <sys/time.h>
 #include <fcntl.h>
 
 #define IN_NUM  12
@@ -51,10 +52,10 @@ t_network	*init_network(int, int, int, t_network *);
 /* print.c */
 void		print_layer(t_layer *);
 /* fill_network.c */
-void		fill_layer_out(int *, t_layer *);
+void		fill_layer_out(double *, t_layer *);
 void		fill_layer_hi(t_layer *);
-void		fill_layer_in(int *, t_layer *);
-void		fill_network(int *,int *, t_network *);
+void		fill_layer_in(double *, t_layer *);
+void		fill_network(double *,double *, t_network *);
 /* run_network.c */
 void		get_input_w(t_network *);
 void		run_network(t_network *, int);

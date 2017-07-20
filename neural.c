@@ -6,7 +6,7 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
   new->type = 0;
   new->w_sum = 0;
-  int r = rand() % 99 + 1;
+  int r = rand() % 9 + 1;
   new->link = NULL;
   new->w_out = (double)r / 10;
   new->value = 0;
@@ -56,19 +56,22 @@ t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 int	main(int ac, char **av)
 {
 	t_network	*network = NULL;;
-	int	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
-	int	targets[OUT_NUM] = {0,1,0,1};
+	double	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
+	double	targets[OUT_NUM] = {0,1,0,1};
 	if (ac <= 1)
 		{printf("need 1 arg\n");return (0);}
 	int	nb_it = atoi(av[1]);
 	if (nb_it < 100)
 		nb_it = 1000;
+	struct timeval t1;
+	gettimeofday(&t1, NULL);
+	srand(t1.tv_usec * t1.tv_sec);
 	/*network initalisation*/
 	network = init_network(IN_NUM, 3, OUT_NUM, network);
+	fill_network(inputs, targets, network);
 	print_layer(network->input_l);
 	print_layer(network->hidden_l);
 	print_layer(network->output_l);
-	fill_network(inputs, targets, network);
 
 	/*training begin*/
 	run_network(network, nb_it);
