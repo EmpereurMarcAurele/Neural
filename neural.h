@@ -15,6 +15,7 @@ struct  s_neural
         double		w_out;
 	double		value;
 	double		target;
+	double		*link;
         t_neural        *prev;
         t_neural        *next;
 };
@@ -36,7 +37,7 @@ struct  s_network
 };
 
 /*PROTOTYPES*/
-/* main.c */
+/* neural.c (main)*/
 t_neural	*init_node(t_layer *, t_neural *, char);
 t_layer		*init_layer(int, char);
 t_network	*init_network(int, int, int, t_network *);
@@ -44,7 +45,12 @@ t_network	*init_network(int, int, int, t_network *);
 void		print_layer(t_layer *);
 /* fill_network.c */
 void		fill_layer_out(int *, t_layer *);
+void		fill_layer_hi(t_layer *);
 void		fill_layer_in(int *, t_layer *);
 void		fill_network(int *,int *, t_network *);
-
+/* run_network.c */
+void		get_input_w(t_network *);
+void		run_network(t_network *, int);
+/* function.c */
+double		sigmoid_func(double);
 #endif /*NEURAL_H_*/

@@ -11,10 +11,10 @@ t_neural	*node_hi = network->hidden_l->start;
 			{
 			int r = rand() % 99 + 1;
 			node_in->w_out = (double)r / 10;
-			node_hi->sum_w += (node_in->w_out * node_in->value);
+			node_hi->w_sum += (node_in->w_out * node_in->value);
 			node_in = node_in->next;
 			}
-		node_hi->value = sigmoid_func(node_hi->sum_w);
+		node_hi->value = sigmoid_func(node_hi->w_sum);
 		node_hi = node_hi->next;
 		}
 }

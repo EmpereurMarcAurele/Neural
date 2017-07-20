@@ -7,7 +7,7 @@ void	print_layer(t_layer *layer)
   tmp = layer->start;
   while (tmp)
     {
-      printf("w_in = %f\n", tmp->w_in);
+      printf("w_in = %f\n", tmp->w_out);
       tmp = tmp->next;
     }
 printf("\n");

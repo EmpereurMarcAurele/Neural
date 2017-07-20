@@ -14,6 +14,7 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   new->type = 0;
   new->w_sum = 0;
   int r = rand() % 99 + 1;
+  new->link = NULL;
   new->w_out = (double)r / 10;
   new->value = 0;
   new->target = 0;
@@ -64,8 +65,9 @@ int	main(int ac, char **av)
 	t_network	*network;
 	int	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
 	int	targets[OUT_NUM] = {0,1,0,1};
+	if (ac <= 1)
+		{printf("need 1 arg\n");return (0);}
 	int	nb_it = atoi(av[1]);
-
 	if (nb_it < 100)
 		nb_it = 1000;
 	/*network initalisation*/
