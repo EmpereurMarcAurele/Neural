@@ -1,8 +1,7 @@
 #include "neural.h"
 
-#define	IN_NUM	3
-#define	OUT_NUM	2
-#define PATTERN_NUM	5
+#define	IN_NUM	12
+#define	OUT_NUM	4
 
 #define	IN_LAYER	1
 #define	HID_LAYER	2
@@ -14,9 +13,11 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
   new->type = 0;
   new->w_sum = 0;
-  new->w_in = 1 / rand();
-  new->w_out = 1 / rand();
+  int r = rand() % 99;
+  new->w_in = 10 / ((double)r + 1);
+  new->w_out = 10 / ((double)r + 1);
   new->value = 0;
+  new->target = 0;
   if(layer->start == NULL)
     {
       new->prev = NULL;
@@ -28,7 +29,6 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
       new->prev = layer->tmp;
       layer->tmp->next = new;
       layer->tmp = new;
-      
     }
   new->next = NULL;
   layer->end = new;
@@ -63,17 +63,17 @@ t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 int	main(int ac, char **av)
 {
 	t_network	*network;
-	int	inputs[PATTERN_NUM][IN_NUM] = { {0,0,0}, {0,0,1}, {0,1,0}, {1,0,0}, {1,1,0} };
-	int	targets[PATTERN_NUM][OUT_NUM] = { {0,0}, {0,1}, {0,0}, {1,0}, {1,1} };
+	int	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
+	int	targets[OUT_NUM] = {0,1,0,1};
 	int	num_training = 10000;
 
 	/*network initalisation*/
-	network = init_network(2, 3, 1, network);
+	network = init_network(IN_NUM, 3, OUT_NUM, network);
 	print_layer(network->input_l);
 	print_layer(network->hidden_l);
 	print_layer(network->output_l);
-	//fill_network(inputs, targets, network);
+	fill_network(inputs, targets, network);
 
 	/*training begin*/
-	//train_network(inputs, outputs, num_training);
+	//run_network(inputs, outputs, num_training);
 }

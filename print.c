@@ -10,4 +10,5 @@ void	print_layer(t_layer *layer)
       printf("w_in = %f\n", tmp->w_in);
       tmp = tmp->next;
     }
+printf("\n");
 }
