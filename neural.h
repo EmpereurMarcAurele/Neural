@@ -12,7 +12,6 @@ struct  s_neural
 {
         char		type;/* input?hidden?output?*/
         double		w_sum;
-        double		w_in;
         double		w_out;
 	double		value;
 	double		target;

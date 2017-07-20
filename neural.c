@@ -13,9 +13,8 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
   /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
   new->type = 0;
   new->w_sum = 0;
-  int r = rand() % 99;
-  new->w_in = 10 / ((double)r + 1);
-  new->w_out = 10 / ((double)r + 1);
+  int r = rand() % 99 + 1;
+  new->w_out = (double)r / 10;
   new->value = 0;
   new->target = 0;
   if(layer->start == NULL)
@@ -65,8 +64,10 @@ int	main(int ac, char **av)
 	t_network	*network;
 	int	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
 	int	targets[OUT_NUM] = {0,1,0,1};
-	int	num_training = 10000;
+	int	nb_it = atoi(av[1]);
 
+	if (nb_it < 100)
+		nb_it = 1000;
 	/*network initalisation*/
 	network = init_network(IN_NUM, 3, OUT_NUM, network);
 	print_layer(network->input_l);
@@ -75,5 +76,5 @@ int	main(int ac, char **av)
 	fill_network(inputs, targets, network);
 
 	/*training begin*/
-	//run_network(inputs, outputs, num_training);
+	run_network(network, nb_it);
 }
