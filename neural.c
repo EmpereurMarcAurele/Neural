@@ -4,6 +4,9 @@ t_neural	*init_node(t_layer *layer, t_neural *new,  char type)
 {
   new = malloc(sizeof(t_neural));
   /*type == 1 ? new->type = IN_LAYER : type == 2 ? new->type = HID_LAYER : new->type = OUT_LAYER;*/
+  new->r_learn = 0.45;
+  new->prev_delta = 0;
+  new->d_error = 0;
   new->type = 0;
   new->w_sum = 0;
   new->link = NULL;

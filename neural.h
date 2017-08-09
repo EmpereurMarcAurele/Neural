@@ -12,6 +12,7 @@
 #define HID_NUM 3
 #define OUT_NUM 4
 
+#define	INERTIA		0.9
 #define IN_LAYER        1
 #define HID_LAYER       2
 #define OUT_LAYER       3
@@ -20,6 +21,9 @@ typedef struct  s_neural        t_neural;
 struct  s_neural
 {
         char		type;/* input?hidden?output? RESERVED*/
+	double		r_learn;
+	double		prev_delta;
+	double		d_error;
         double		w_sum;
 	double		value;
 	double		target;
@@ -58,7 +62,8 @@ void		fill_layer_in(double *, t_layer *);
 void		fill_network(double *,double *, t_network *);
 /* run_network.c */
 void		back_propagationHO(t_network *);
-void		get_input_w(t_network *);
+void		get_value_out(t_network *);
+void		get_value_hid(t_network *);
 void		run_network(t_network *, int);
 /* function.c */
 double		sigmoid_deriv(double);
