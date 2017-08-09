@@ -54,6 +54,7 @@ t_neural	*init_node(t_layer *, t_neural *, char);
 t_layer		*init_layer(int, char);
 t_network	*init_network(int, int, int, t_network *);
 /* print.c */
+void		print_only_res(t_network *);
 void		print_layer(t_layer *);
 /* fill_network.c */
 void		fill_layer_out(double *, t_layer *);

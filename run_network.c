@@ -104,6 +104,7 @@ void	run_network(t_network *network, int nb_it)
 		back_propagationHO(network);
 		process_hidden_l_error(network);
 		back_propagationIH(network);
+		print_only_res(network);
 		i++;
 	}
 }
