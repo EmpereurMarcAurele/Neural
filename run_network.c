@@ -7,10 +7,14 @@ t_neural	*node_in = network->input_l_start;
 	while (node_in)
 	{
 		t_neural	*node_hi = network->hidden_l->start;
+		int i = 0;
 		while (node_hi)
 		{
-		node_in->link[i] += 
+		node_in->link[i] += node_hi->d_error * node_in->value * node_in->r_learn;
+		node_hi = node_hi->next;
+		i++;
 		}
+	node_in = node_in->next;
 	}
 }
 
@@ -98,6 +102,8 @@ void	run_network(t_network *network, int nb_it)
 		get_value_hid(network);
 		get_value_out(network);
 		back_propagationHO(network);
+		process_hidden_l_error(network);
+		back_propagationIH(network);
 		i++;
 	}
 }

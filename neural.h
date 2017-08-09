@@ -61,6 +61,8 @@ void		fill_layer_hi(t_layer *);
 void		fill_layer_in(double *, t_layer *);
 void		fill_network(double *,double *, t_network *);
 /* run_network.c */
+void		back_propagationIH(t_network *);
+void		process_hidden_l_error(t_network *);
 void		back_propagationHO(t_network *);
 void		get_value_out(t_network *);
 void		get_value_hid(t_network *);
