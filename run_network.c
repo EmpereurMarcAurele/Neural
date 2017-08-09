@@ -2,7 +2,7 @@
 
 void		back_propagationIH(t_network *network)
 {
-t_neural	*node_in = network->input_l_start;
+t_neural	*node_in = network->input_l->start;
 
 	while (node_in)
 	{

@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 	double	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
 	double	targets[OUT_NUM] = {0,1,0,1};
 	if (ac <= 1)
-		{printf("need 1 arg\n");return (0);}
+		{printf("Need 1 argument.\nIteration number. Typically must set to 10K to be efficient.\n\n");return (0);}
 	int	nb_it = atoi(av[1]);
 	if (nb_it < 100)
 		nb_it = 1000;
