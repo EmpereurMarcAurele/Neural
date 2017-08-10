@@ -8,10 +8,12 @@
 #include <sys/time.h>
 #include <fcntl.h>
 
+/* HERE Macro for change size of layers*/
 #define IN_NUM  12
 #define HID_NUM 3
 #define OUT_NUM 4
 
+/* Marco not used for the moment*/
 #define	INERTIA		0.9
 #define IN_LAYER        1
 #define HID_LAYER       2

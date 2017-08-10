@@ -57,8 +57,11 @@ t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 int	main(int ac, char **av)
 {
 	t_network	*network = NULL;;
+/*HERE you can modify values of Input layer and the desire Output layer.*/
+/*If you want add some neurons on layers, don't forget to change marco values on neural.h file*/
 	double	inputs[IN_NUM] = {0.5,0.5,0.5,0.5,0.5,1,1,1,0.5,1,0.5,0.5};
-	double	targets[OUT_NUM] = {0,1,0,1};
+	double	targets[OUT_NUM] = {0,1,1,1};
+
 	if (ac <= 1)
 		{printf("Need 1 argument.\nIteration number. Typically must set to 10K to be efficient.\n\n");return (0);}
 	int	nb_it = atoi(av[1]);
