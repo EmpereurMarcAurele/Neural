@@ -77,7 +77,6 @@ printf("hidden layer before run\n");
 	print_layer(network->hidden_l);
 printf("output layer before run\n");
 	print_layer(network->output_l);
-
 	/*training begin*/
 	run_network(network, nb_it);
 	return (0);

@@ -106,10 +106,8 @@ void	run_network(t_network *network, int nb_it)
 		back_propagationHO(network);
 		process_hidden_l_error(network);
 		back_propagationIH(network);
-		print_layer(network->input_l);
-		print_layer(network->hidden_l);
-		print_layer(network->output_l);
-		print_only_res(network);
 		i++;
 	}
+	printf("Final result:\n");
+	print_layer(network->output_l);
 }
