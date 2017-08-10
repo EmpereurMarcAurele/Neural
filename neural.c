@@ -57,7 +57,7 @@ t_network	*init_network(int nb_in, int nb_hi, int nb_out, t_network *network)
 int	main(int ac, char **av)
 {
 	t_network	*network = NULL;;
-	double	inputs[IN_NUM] = {0,0,0,0,0,1,1,1,0,1,0,0};
+	double	inputs[IN_NUM] = {0.5,0.5,0.5,0.5,0.5,1,1,1,0.5,1,0.5,0.5};
 	double	targets[OUT_NUM] = {0,1,0,1};
 	if (ac <= 1)
 		{printf("Need 1 argument.\nIteration number. Typically must set to 10K to be efficient.\n\n");return (0);}
@@ -70,8 +70,12 @@ int	main(int ac, char **av)
 	/*network initalisation*/
 	network = init_network(IN_NUM, HID_NUM, OUT_NUM, network);
 	fill_network(inputs, targets, network);
+
+printf("input layer before run\n");
 	print_layer(network->input_l);
+printf("hidden layer before run\n");
 	print_layer(network->hidden_l);
+printf("output layer before run\n");
 	print_layer(network->output_l);
 
 	/*training begin*/

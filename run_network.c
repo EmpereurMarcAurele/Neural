@@ -10,7 +10,7 @@ t_neural	*node_in = network->input_l->start;
 		int i = 0;
 		while (node_hi)
 		{
-		node_in->link[i] += node_hi->d_error * node_in->value * node_in->r_learn;
+		node_in->link[i] += node_hi->d_error/* * node_in->value*/ * node_in->r_learn;
 		node_hi = node_hi->next;
 		i++;
 		}
@@ -48,8 +48,8 @@ int		i = 0;
 		t_neural *node_hi = network->hidden_l->start;
 		while (node_hi)
 			{
-			double delta_w = node_hi->r_learn * node_out->d_error * node_hi->value;/*node_hi->value? -> node_out->value?*/
-			node_hi->link[i] = node_hi->link[i] + delta_w + (INERTIA * node_hi->prev_delta);
+			double delta_w = node_hi->r_learn * node_out->d_error * node_hi->value;
+			node_hi->link[i] = node_hi->link[i] + delta_w;/* + (INERTIA * node_hi->prev_delta);*/
 			node_hi->prev_delta = delta_w;
 			node_hi = node_hi->next;
 			}
@@ -71,6 +71,7 @@ int		i = 0;
 			node_hi = node_hi->next;
 			}
 		node_out->value = sigmoid_func(node_out->w_sum);
+		node_out->w_sum = 0;
 		node_out = node_out->next;
 		i++;
 		}
@@ -89,6 +90,7 @@ int		i = 0;
 			node_in = node_in->next;
 			}
 		node_hi->value = sigmoid_func(node_hi->w_sum);
+		node_hi->w_sum = 0;
 		node_hi = node_hi->next;
 		i++;
 		}
@@ -104,6 +106,9 @@ void	run_network(t_network *network, int nb_it)
 		back_propagationHO(network);
 		process_hidden_l_error(network);
 		back_propagationIH(network);
+		print_layer(network->input_l);
+		print_layer(network->hidden_l);
+		print_layer(network->output_l);
 		print_only_res(network);
 		i++;
 	}

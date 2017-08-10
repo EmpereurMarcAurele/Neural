@@ -22,7 +22,7 @@ void	print_layer(t_layer *layer)
   while (tmp)
 	{
 	printf("target = %f ", tmp->target);
-	printf("value = %f ; w_sum = %f\n", tmp->value, tmp->w_sum);
+	printf("value = %f ; r_learn = %f, d_error = %f, w_sum = %f\n", tmp->value, tmp->r_learn, tmp->d_error, tmp->w_sum);
 	tmp = tmp->next;
 	}
 	printf("\n");
