@@ -1,5 +1,6 @@
 # Neural
-Neural v1.0 works fine.       
+Neural is a simple Multi-layer-perceptron (MLP). Neurons are supervised by a algorithm (back-propagation here).                      
+Neural v1.0 works fine.            
 It's a basic version, for changing inputs and output, we need go to neural.c and neural.h
 to modify neurons values.                                
 
