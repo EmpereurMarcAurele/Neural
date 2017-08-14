@@ -1,0 +1,4 @@
+-A data normalizer
+-A serializer / deserializer
+-Add multiple hidden layers
+
