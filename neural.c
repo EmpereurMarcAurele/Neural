@@ -69,7 +69,7 @@ int	main(int ac, char **av)
 
 	if (ac <= 2)
 		{print_arg_error();return (0);}
-	if (atoi(av[1]) == 1)
+	if (atoi(av[1]) == 1 && ac == 2)
 		{load_serializer(av[2]);goto label1;}
 	if (ac <= 3)
 		{print_arg_error();return (0);}
