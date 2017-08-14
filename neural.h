@@ -70,7 +70,7 @@ void		back_propagationHO(t_network *);
 void		get_value_out(t_network *);
 void		get_value_hid(t_network *);
 void		run_network(t_network *, int);
-/* function.c */
+/* activation_func.c */
 double		sigmoid_deriv(double);
 double		sigmoid_func(double);
 #endif /*NEURAL_H_*/

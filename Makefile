@@ -7,7 +7,7 @@ CFLAGS	=	-Wall -Wextra
 SRC	=	neural.c	\
 		fill_network.c	\
 		run_network.c	\
-		function.c	\
+		activation_func.c	\
 		print.c
 
 OBJ	= $(SRC:.c=.o)
