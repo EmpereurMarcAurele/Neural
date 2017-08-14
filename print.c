@@ -14,6 +14,13 @@ t_neural	*node_out = network->output_l->start;
 	printf("\n");
 }
 
+void	print_arg_error()
+{
+printf("Need 3 argument.\n");
+printf("1st Iteration number. Typically must set to 10K to be efficient.\n");
+printf("2nd number of hidden layers\n");
+printf("3rd number of nodes on a hidden layer\n\n");
+}
 void	print_layer(t_layer *layer)
 {
   t_neural	*tmp;

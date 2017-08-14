@@ -67,11 +67,12 @@ int	main(int ac, char **av)
 	double	inputs[IN_NUM] = {0,0,1,0,0,1,1,1,0,1,0,0};
 	double	targets[OUT_NUM] = {0.125,0.375,0.625,0.875};
 
+	if (ac <= 2)
+		{print_arg_error();return (0);}
+	if (atoi(av[1]) == 1)
+		{load_serializer(av[2]);goto label1;}
 	if (ac <= 3)
-		{printf("Need 3 argument.\n");
-		printf("1st Iteration number. Typically must set to 10K to be efficient.\n");
-		printf("2nd number of hidden layers\n");
-		printf("3rd number of nodes on a hidden layer\n\n");return (0);}
+		{print_arg_error();return (0);}
 	int	nb_it = atoi(av[1]);
 	int	nb_hid_layer = atoi(av[2]);
 	int	nb_size_hid_layer = atoi(av[3]);
@@ -95,6 +96,7 @@ printf("hidden layer before run\n");
 printf("output layer before run\n");
 	print_layer(network->output_l);
 	/*training begin*/
+label1:
 	run_network(network, nb_it);
 	return (0);
 }
