@@ -2,3 +2,4 @@
 -A serializer / deserializer
 -Add multiple hidden layers
 
+https://genome.tugraz.at/MedicalInformatics2/SOM.pdf
